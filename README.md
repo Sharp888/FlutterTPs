@@ -1,4 +1,4 @@
 # Repo de Pedro Domingues (CDA.NET)
 
 # Commentaire
-Le TP Finder a été pushé pour la dernière fois à l'étape 2.
+TP à évoluer préféré: Finder pour le Provider et ToDoList pour Provider+GoRouter
