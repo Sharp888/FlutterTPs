@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:tp_todolist/widgets/task_creation_form.dart';
 import 'package:tp_todolist/widgets/task_preview.dart';
 import 'package:tp_todolist/widgets/task_details.dart';
 import 'providers/task_provider.dart';
@@ -18,6 +19,11 @@ final _router = GoRouter(
               (state.pathParameters['taskProviderindex']).toString();
           return TaskDetailsCard(
               taskProviderindex: int.parse(routeTaskProviderindex));
+        }),
+    GoRoute(
+        path: '/taskcreation',
+        builder: (context, state) {
+          return TaskCreationPage();
         })
   ],
 );
@@ -52,20 +58,21 @@ class MyHomePage extends StatelessWidget {
         title: const Text('TP To Do List'),
       ),
       body: Consumer<TaskProvider>(
-          builder: (context, TaskProvider taskProvider, child) =>
-              ListView.builder(
-                itemCount: taskProvider.tasks.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return TaskPreviewCard(taskProviderindex: index);
-                },
-              )),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     _incrementCounter();
-      //   },
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ),
+        builder: (context, TaskProvider taskProvider, child) =>
+            ListView.builder(
+          itemCount: taskProvider.tasks.length,
+          itemBuilder: (BuildContext context, int index) {
+            return TaskPreviewCard(taskProviderindex: index);
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          GoRouter.of(context).go('/taskcreation');
+        },
+        tooltip: 'New Task',
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
