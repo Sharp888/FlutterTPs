@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../models/task.dart';
 
@@ -41,7 +42,7 @@ class TaskPreviewCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    task.deadline != null ? task.deadline!.toString() : '',
+                    task.deadline != null ? task.deadline.toString() : '',
                     style: const TextStyle(
                       fontStyle: FontStyle.italic,
                       color: Colors.grey,
@@ -61,7 +62,8 @@ class TaskPreviewCard extends StatelessWidget {
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
-                  // TODO
+                  String? taskId = task.id;
+                  GoRouter.of(context).go('/taskdetails/$taskId');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,

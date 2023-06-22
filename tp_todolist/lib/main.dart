@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tp_todolist/widgets/task_preview.dart';
-// import 'package:tp_todolist/widgets/task_preview.dart';
 import 'package:tp_todolist/widgets/task_details.dart';
-// import 'package:tp_todolist/models/task.dart';
-// import 'package:tp_todolist/widgets/task_master.dart';
 import 'providers/task_provider.dart';
 
 final _router = GoRouter(
@@ -35,6 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerConfig: _router,
     );
   }
@@ -43,7 +41,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  void _incrementCounter() {}
+  // void _incrementCounter() {}
 
   @override
   Widget build(BuildContext context) {
