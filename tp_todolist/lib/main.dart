@@ -12,11 +12,12 @@ final _router = GoRouter(
       builder: (context, state) => const MyHomePage(),
     ),
     GoRoute(
-        path: '/taskdetails/:taskID',
+        path: '/taskdetails/:taskProviderindex',
         builder: (context, state) {
-          final taskID = state.pathParameters['taskID'];
-          final task = (context.read<TaskProvider>()).getTaskByID(taskID);
-          return TaskDetailsCard(task: task);
+          final routeTaskProviderindex =
+              (state.pathParameters['taskProviderindex']).toString();
+          return TaskDetailsCard(
+              taskProviderindex: int.parse(routeTaskProviderindex));
         })
   ],
 );
@@ -55,7 +56,7 @@ class MyHomePage extends StatelessWidget {
               ListView.builder(
                 itemCount: taskProvider.tasks.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return TaskPreviewCard(task: taskProvider.tasks[index]);
+                  return TaskPreviewCard(taskProviderindex: index);
                 },
               )),
       // floatingActionButton: FloatingActionButton(

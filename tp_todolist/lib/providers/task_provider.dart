@@ -101,4 +101,14 @@ class TaskProvider extends ChangeNotifier {
 
     return tasks;
   }
+
+  void changeStatusOfTaskByIndex(int index) {
+    tasks[index].done = !tasks[index].done;
+    notifyListeners();
+  }
+
+  void deleteTaskByIndex(int index) {
+    tasks.removeAt(index);
+    notifyListeners();
+  }
 }
